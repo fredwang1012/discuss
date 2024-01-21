@@ -98,7 +98,12 @@ public class MainActivity extends AppCompatActivity {
                     "really really, really really, really really, really really, really really" +
                     " sorry about that :(";
             allPosts.addPost(new Post(LONG_TITLE, new PostItem(LONG_QUESTION, "Troll", true)));
-            allPosts.saveToJson();
+
+            for (int i = 1; i <= 20; i++) {
+                allPosts.addPost(new Post("New Post " + i, new PostItem(
+                        "content of New Post " + i, "Random User " + i, true
+                )));
+            }
 
         } catch (PostCollection.PostTitleDuplicateException e) {
             throw new RuntimeException(e);
