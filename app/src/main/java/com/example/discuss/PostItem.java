@@ -61,7 +61,7 @@ public class PostItem implements Writable {
         JSONObject json = new JSONObject();
         try {
             json.put("content", content);
-            json.put("poster", poster);
+            json.put("poster", (poster == null) ? "Unknown" : poster);
             json.put("LocalDateTime",creationTime);
             json.put("questioned?",isQuestion);
         } catch (JSONException e) {

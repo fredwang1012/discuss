@@ -45,6 +45,7 @@ public class UserInterface extends AppCompatActivity {
                     "post title",
                     ((Helpers.FormattedString) adView.getItemAtPosition(position)).originalString
             );
+            onClickIntent.putExtra(MainActivity.DISPLAY_NAME, text);
             startActivity(onClickIntent);
         });
 

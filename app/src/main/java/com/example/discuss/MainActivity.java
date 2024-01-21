@@ -99,17 +99,16 @@ public class MainActivity extends AppCompatActivity {
 //                    " sorry about that :(";
 //            allPosts.addPost(new Post(LONG_TITLE, new PostItem(LONG_QUESTION, "Troll", true)));
 //
-//            for (int i = 1; i <= 20; i++) {
-//                allPosts.addPost(new Post("New Post " + i, new PostItem(
-//                        "content of New Post " + i, "Random User " + i, true
-//                )));
-//            }
+////            for (int i = 1; i <= 20; i++) {
+////                allPosts.addPost(new Post("New Post " + i, new PostItem(
+////                        "content of New Post " + i, "Random User " + i, true
+////                )));
+////            }
 //
 //        } catch (PostCollection.PostTitleDuplicateException e) {
 //            throw new RuntimeException(e);
 //        }
-
-        allPosts.saveToJson();
+        //allPosts.reset();
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 

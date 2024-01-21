@@ -12,6 +12,7 @@ public class PostReplyUI extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_post_reply_ui);
         Intent intent = getIntent();
+        String currentUser = intent.getStringExtra(MainActivity.DISPLAY_NAME);
 
         String postTitle = intent.getStringExtra("post title");
         Post post = MainActivity.allPosts.getPostFromTitle(postTitle);
@@ -23,9 +24,11 @@ public class PostReplyUI extends AppCompatActivity {
 
         btn.setOnClickListener(view -> {
             String q = text.getText().toString();
-            PostItem p = new PostItem(q, poster, false);
+            PostItem p = new PostItem(q, currentUser, false);
             post.addReplies(p);
+            MainActivity.allPosts.saveToJson();
             Intent intent1 = new Intent(this, PostUI.class);
+            intent1.putExtra(MainActivity.DISPLAY_NAME, currentUser);
             intent1.putExtra("post title", postTitle);
             startActivity(intent1);
         });

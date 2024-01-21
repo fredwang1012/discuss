@@ -41,8 +41,10 @@ public class Dialog extends AppCompatActivity {
             String chatGPT = callAPI(q);
             PostItem chat = new PostItem(chatGPT, "chatGPT", false);
             post1.addReplies(chat);
+            MainActivity.allPosts.saveToJson();
             try {
                 MainActivity.allPosts.addPost(post1);
+                MainActivity.allPosts.saveToJson();
                 Intent newIntent = new Intent(this, UserInterface.class);
                 newIntent.putExtra(MainActivity.DISPLAY_NAME, username);
                 startActivity(newIntent);

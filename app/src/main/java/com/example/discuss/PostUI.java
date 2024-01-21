@@ -35,7 +35,7 @@ public class PostUI extends AppCompatActivity {
 
         for (int i = 0; i < replies.size(); i++) {
             postContent[i] = new Helpers.FormattedString(
-                    replies.get(i).getContent(), 16, Helpers.FormattedString.Mode.LINE_BROKEN
+                    replies.get(i).toString(), 16, Helpers.FormattedString.Mode.LINE_BROKEN
             );
         }
 
@@ -52,6 +52,8 @@ public class PostUI extends AppCompatActivity {
             Intent nextIntent = new Intent(this, PostReplyUI.class);
             nextIntent.putExtra("post title", postTitle);
             nextIntent.putExtra("poster", postQuestion.getPoster());
+            String username = intent.getStringExtra(MainActivity.DISPLAY_NAME);
+            nextIntent.putExtra(MainActivity.DISPLAY_NAME, username);
             startActivity(nextIntent);
         });
     }
