@@ -27,7 +27,9 @@ public class Dialog extends AppCompatActivity {
             Post post1 = new Post(t, p);
             try {
                 MainActivity.allPosts.addPost(post1);
-                startActivity(new Intent(this, UserInterface.class));
+                Intent newIntent = new Intent(this, UserInterface.class);
+                newIntent.putExtra(MainActivity.DISPLAY_NAME, username);
+                startActivity(newIntent);
             } catch (PostCollection.PostTitleDuplicateException e) {
                 Toast.makeText(
                         Dialog.this, "POST WITH THIS TITLE ALREADY EXISTS", Toast.LENGTH_SHORT
