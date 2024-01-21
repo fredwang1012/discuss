@@ -39,15 +39,13 @@ public class UserInterface extends AppCompatActivity {
         );
         posts.setAdapter(adapter);
 
-        posts.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            public void onItemClick(AdapterView<?> adView, View view, int position, long itemID) {
-                Intent onClickIntent = new Intent(getApplicationContext(), PostUI.class);
-                onClickIntent.putExtra(
-                        "post title",
-                        ((Helpers.FormattedString) adView.getItemAtPosition(position)).originalString
-                );
-                startActivity(onClickIntent);
-            }
+        posts.setOnItemClickListener((adView, view, position, itemID) -> {
+            Intent onClickIntent = new Intent(getApplicationContext(), PostUI.class);
+            onClickIntent.putExtra(
+                    "post title",
+                    ((Helpers.FormattedString) adView.getItemAtPosition(position)).originalString
+            );
+            startActivity(onClickIntent);
         });
 
         TextView footer = (TextView) findViewById(R.id.footer);
