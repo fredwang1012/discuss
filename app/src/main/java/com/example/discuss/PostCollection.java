@@ -1,5 +1,7 @@
 package com.example.discuss;
 
+import android.os.Environment;
+
 import com.example.discuss.persistance.JsonWriter;
 import com.example.discuss.persistance.Writable;
 
@@ -7,6 +9,7 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.List;
@@ -60,7 +63,10 @@ public class PostCollection implements Writable {
     }
 
     public void saveToJson() {
-        final String JSON_STORE = "./data/PostCollection.json";
+//        File root = new File(Environment.getExternalStorageDirectory(),"PostCollection.json");
+//        final String JSON_STORE = "PostCollection.json";
+
+        final String JSON_STORE = Environment.getExternalStorageDirectory().toString() + "/" + Environment.DIRECTORY_DOWNLOADS + "/PostCollection.json";
         JsonWriter jsonWriter = new JsonWriter(JSON_STORE);
         try {
             jsonWriter.open();
