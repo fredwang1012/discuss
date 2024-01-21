@@ -48,16 +48,24 @@ public class UserInterface extends AppCompatActivity {
             startActivity(onClickIntent);
         });
 
+        TextView footer = (TextView) findViewById(R.id.footer);
+
 
         Button btn = (Button) findViewById(R.id.button2);
 
 
-        btn.setOnClickListener(v -> openDialog());
+        btn.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v) {
+                openDialog(text);
+            }
+        });
 
     }
 
-    private void openDialog() {
+    private void openDialog(String text) {
         Intent intent = new Intent(this, Dialog.class);
+        intent.putExtra(MainActivity.DISPLAY_NAME, text);
         startActivity(intent);
     }
 }
