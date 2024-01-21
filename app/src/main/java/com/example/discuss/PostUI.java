@@ -30,5 +30,4 @@ public class PostUI extends AppCompatActivity {
         questionView.setText(postQuestion.toString());
 
     }
-
 }
