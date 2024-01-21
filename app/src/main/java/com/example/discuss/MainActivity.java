@@ -13,7 +13,7 @@ import java.util.*;
 
 public class MainActivity extends AppCompatActivity {
 
-    public static final PostCollection allPosts = new PostCollection();
+    public static final PostCollection allPosts = new PostCollection(true);
     public static final String DISPLAY_NAME = "com.example.discuss.example.DISPLAY_NAME";
 
     private static class User {
@@ -72,42 +72,42 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
 
         // delete these later
-        try {
-
-            allPosts.addPost(new Post("Help me now!", new PostItem(
-                    "Can you tell me what is 2 + 2? Thanks!",
-                    "Lucas", true
-            ))); allPosts.addPost(new Post("Urgently need answers!", new PostItem(
-                    "Can you tell me what is 3 - 5? Thanks!",
-                    "Jerry", true
-            ))); allPosts.addPost(new Post("I'm going insane!", new PostItem(
-                    "Can you tell me what is 7 * 3? Thanks!",
-                    "Frederick", true
-            ))); allPosts.addPost(new Post("Please...", new PostItem(
-                    "Can you tell me what is 9 / 2? Thanks!",
-                    "Boblet", true
-            ))); allPosts.addPost(new Post("Help a dude out!", new PostItem(
-                    "Can you tell me what is the capital city of Canada? Thanks!",
-                    "George", true
-            )));
-
-            final String LONG_TITLE =
-                    "My question has a really long title, so sorry about that :(";
-            final String LONG_QUESTION =
-                    "My question has an even longer body, so " +
-                    "really really, really really, really really, really really, really really" +
-                    " sorry about that :(";
-            allPosts.addPost(new Post(LONG_TITLE, new PostItem(LONG_QUESTION, "Troll", true)));
-
-            for (int i = 1; i <= 20; i++) {
-                allPosts.addPost(new Post("New Post " + i, new PostItem(
-                        "content of New Post " + i, "Random User " + i, true
-                )));
-            }
-
-        } catch (PostCollection.PostTitleDuplicateException e) {
-            throw new RuntimeException(e);
-        }
+//        try {
+//
+//            allPosts.addPost(new Post("Help me now!", new PostItem(
+//                    "Can you tell me what is 2 + 2? Thanks!",
+//                    "Lucas", true
+//            ))); allPosts.addPost(new Post("Urgently need answers!", new PostItem(
+//                    "Can you tell me what is 3 - 5? Thanks!",
+//                    "Jerry", true
+//            ))); allPosts.addPost(new Post("I'm going insane!", new PostItem(
+//                    "Can you tell me what is 7 * 3? Thanks!",
+//                    "Frederick", true
+//            ))); allPosts.addPost(new Post("Please...", new PostItem(
+//                    "Can you tell me what is 9 / 2? Thanks!",
+//                    "Boblet", true
+//            ))); allPosts.addPost(new Post("Help a dude out!", new PostItem(
+//                    "Can you tell me what is the capital city of Canada? Thanks!",
+//                    "George", true
+//            )));
+//
+//            final String LONG_TITLE =
+//                    "My question has a really long title, so sorry about that :(";
+//            final String LONG_QUESTION =
+//                    "My question has an even longer body, so " +
+//                    "really really, really really, really really, really really, really really" +
+//                    " sorry about that :(";
+//            allPosts.addPost(new Post(LONG_TITLE, new PostItem(LONG_QUESTION, "Troll", true)));
+//
+//            for (int i = 1; i <= 20; i++) {
+//                allPosts.addPost(new Post("New Post " + i, new PostItem(
+//                        "content of New Post " + i, "Random User " + i, true
+//                )));
+//            }
+//
+//        } catch (PostCollection.PostTitleDuplicateException e) {
+//            throw new RuntimeException(e);
+//        }
 
         allPosts.saveToJson();
         super.onCreate(savedInstanceState);

@@ -2,6 +2,7 @@ package com.example.discuss;
 
 import android.os.Environment;
 
+import com.example.discuss.persistance.JsonReader;
 import com.example.discuss.persistance.JsonWriter;
 import com.example.discuss.persistance.Writable;
 
@@ -11,6 +12,7 @@ import org.json.JSONObject;
 
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -18,16 +20,31 @@ public class PostCollection implements Writable {
 
     private List<Post> posts;
     private List<String> titles;
+    private final String JSON_STORE = Environment.getExternalStorageDirectory().toString() + "/" + Environment.DIRECTORY_DOWNLOADS + "/PostCollection.json";
 
+    private JsonWriter jsonWriter = new JsonWriter(JSON_STORE);
+    private JsonReader jsonReader = new JsonReader(JSON_STORE);
     public static class PostTitleDuplicateException extends Exception {
         // nothing
     }
 
-    public PostCollection() {
+    public PostCollection(boolean shouldCallRead) {
         // TODO: read all posts from JSON
+        //throw new RuntimeException();
+
+        PostCollection postCollection = readFromJson();
+
+        posts = postCollection.getPostList();
+        titles = postCollection.getAllPostTitles();
+
+
+
+
+    }
+
+    public PostCollection() {
         posts = new ArrayList<>();
         titles = new ArrayList<>();
-        //throw new RuntimeException();
     }
 
     public void addPost(Post post) throws PostTitleDuplicateException {
@@ -46,6 +63,11 @@ public class PostCollection implements Writable {
         // TODO: return post titles in the order they should be shown (latest post first)
         return this.titles;
     }
+
+    public List<Post> getPostList() {
+        return posts;
+    }
+
 
     public Post getPostFromTitle(String title) {
 
@@ -66,8 +88,7 @@ public class PostCollection implements Writable {
 //        File root = new File(Environment.getExternalStorageDirectory(),"PostCollection.json");
 //        final String JSON_STORE = "PostCollection.json";
 
-        final String JSON_STORE = Environment.getExternalStorageDirectory().toString() + "/" + Environment.DIRECTORY_DOWNLOADS + "/PostCollection.json";
-        JsonWriter jsonWriter = new JsonWriter(JSON_STORE);
+
         try {
             jsonWriter.open();
         } catch (FileNotFoundException e) {
@@ -75,6 +96,14 @@ public class PostCollection implements Writable {
         }
         jsonWriter.write(this);
         jsonWriter.close();
+    }
+
+    public PostCollection readFromJson() {
+        try {
+            return jsonReader.read();
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
     }
 
     public void reset() {
