@@ -112,15 +112,12 @@ public class MainActivity extends AppCompatActivity {
 
         Button btn = (Button) findViewById(R.id.button);
 
-        btn.setOnClickListener(new View.OnClickListener(){
-            @Override
-            public void onClick(View v) {
-                if(User.userHasPassword(users, username.getText().toString(), password.getText().toString())) {
-                    Toast.makeText(MainActivity.this, "LOGIN SUCCESSFUL", Toast.LENGTH_SHORT).show();
-                    openUI(User.getDisplayName(users, username.getText().toString()));
-                }else
-                    Toast.makeText(MainActivity.this, "LOGIN FAILED", Toast.LENGTH_SHORT).show();
-            }
+        btn.setOnClickListener(v -> {
+            if(User.userHasPassword(users, username.getText().toString(), password.getText().toString())) {
+                Toast.makeText(MainActivity.this, "LOGIN SUCCESSFUL", Toast.LENGTH_SHORT).show();
+                openUI(User.getDisplayName(users, username.getText().toString()));
+            }else
+                Toast.makeText(MainActivity.this, "LOGIN FAILED", Toast.LENGTH_SHORT).show();
         });
     }
 

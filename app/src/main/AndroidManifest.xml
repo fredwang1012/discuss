@@ -21,6 +21,10 @@
             android:exported="false"
             android:parentActivityName=".UserInterface"/>
         <activity
+            android:name=".PostReplyUI"
+            android:exported="false"
+            android:parentActivityName=".PostUI"/>
+        <activity
             android:name=".UserInterface"
             android:exported="false"
             android:parentActivityName=".MainActivity" />
