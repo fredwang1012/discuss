@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -17,18 +18,21 @@ public class Dialog extends AppCompatActivity {
         TextView title = findViewById(R.id.title);
 
         Button post = findViewById(R.id.button5);
+        String username = getIntent().getStringExtra(MainActivity.DISPLAY_NAME);
 
         post.setOnClickListener(view -> {
             String q = text.getText().toString();
             String t = title.getText().toString();
-            PostItem p = new PostItem(q, "", true);
+            PostItem p = new PostItem(q, username, true);
             Post post1 = new Post(t, p);
             try {
                 MainActivity.allPosts.addPost(post1);
+                startActivity(new Intent(this, UserInterface.class));
             } catch (PostCollection.PostTitleDuplicateException e) {
-                throw new RuntimeException(e);
+                Toast.makeText(
+                        Dialog.this, "POST WITH THIS TITLE ALREADY EXISTS", Toast.LENGTH_SHORT
+                ).show();
             }
-            finish();
         });
     }
 }
