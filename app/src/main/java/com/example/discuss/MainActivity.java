@@ -109,6 +109,7 @@ public class MainActivity extends AppCompatActivity {
             throw new RuntimeException(e);
         }
 
+        allPosts.saveToJson();
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
