@@ -4,6 +4,9 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
+import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -26,6 +29,32 @@ public class UserInterface extends AppCompatActivity {
                 this, R.layout.activity_posts, postTitles
         );
         posts.setAdapter(adapter);
+
+        posts.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            public void onItemClick(AdapterView<?> adView, View view, int position, long itemID) {
+                Intent onClickIntent = new Intent(getApplicationContext(), PostUI.class);
+                //onClickIntent.putExtra("", position);
+                startActivity(onClickIntent);
+            }
+        });
+
+        /*
+            Intent onClickIntent = new Intent(getApplicationContext(), UserInterface.class);
+            onClickIntent.putExtra("position", position);
+            startActivity(onClickIntent);
+            // --------------
+            SpannableString setTo = new SpannableString(medName + " (" + medTime + ")   ");
+
+            ClickableSpan clickableMed = new ClickableSpan() {
+                @Override
+                public void onClick(@NonNull View view) {
+                    openMedDetails(medName, medDesc, medIsP);
+                }
+            };
+
+            setTo.setSpan(clickableMed, 0, setTo.length() - 3, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
+            medications.get(i).setText(setTo);
+        */
 
     }
 }
