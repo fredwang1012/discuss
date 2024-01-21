@@ -23,7 +23,7 @@ public class UserInterface extends AppCompatActivity {
         ListView posts = (ListView) findViewById(R.id.posts);
         String[] postTitles = {"a", "b", "c"};
         ArrayAdapter<String> adapter = new ArrayAdapter<>(
-                this, R.layout.activity_user_interface, postTitles
+                this, R.layout.activity_posts, postTitles
         );
         posts.setAdapter(adapter);
 
