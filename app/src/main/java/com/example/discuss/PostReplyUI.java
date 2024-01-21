@@ -15,7 +15,7 @@ public class PostReplyUI extends AppCompatActivity {
 
         String postTitle = intent.getStringExtra("post title");
         Post post = MainActivity.allPosts.getPostFromTitle(postTitle);
-
+        String poster = intent.getStringExtra("poster");
 
         TextView text = findViewById(R.id.editTextText);
 
@@ -23,9 +23,11 @@ public class PostReplyUI extends AppCompatActivity {
 
         btn.setOnClickListener(view -> {
             String q = text.getText().toString();
-            PostItem p = new PostItem(q, "", false);
+            PostItem p = new PostItem(q, poster, false);
             post.addReplies(p);
-            startActivity(new Intent(this, PostUI.class));
+            Intent intent1 = new Intent(this, PostUI.class);
+            intent1.putExtra("post title", postTitle);
+            startActivity(intent1);
         });
     }
 

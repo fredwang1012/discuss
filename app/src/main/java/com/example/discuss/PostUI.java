@@ -42,7 +42,7 @@ public class PostUI extends AppCompatActivity {
         ArrayAdapter<Helpers.FormattedString> adapter = new ArrayAdapter<>(
                 this, R.layout.activity_posts, postContent
         );
-
+        posts.setAdapter(adapter);
         PostItem postQuestion = post.getQuestion();
         TextView questionView = (TextView) findViewById(R.id.postQuestion);
         questionView.setText(postQuestion.toString());
@@ -51,6 +51,7 @@ public class PostUI extends AppCompatActivity {
         btn.setOnClickListener(view -> {
             Intent nextIntent = new Intent(this, PostReplyUI.class);
             nextIntent.putExtra("post title", postTitle);
+            nextIntent.putExtra("poster", postQuestion.getPoster());
             startActivity(nextIntent);
         });
     }
