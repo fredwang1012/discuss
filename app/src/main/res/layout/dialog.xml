@@ -10,7 +10,6 @@
         android:layout_width="315dp"
         android:layout_height="0dp"
         android:layout_marginBottom="15dp"
-        android:text="Post Content"
         app:layout_constraintBottom_toTopOf="@+id/button5"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -36,11 +35,10 @@
         android:layout_marginTop="56dp"
         android:layout_marginEnd="47dp"
         android:layout_marginBottom="21dp"
-        android:text="Post Title"
         app:layout_constraintBottom_toTopOf="@+id/textView"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        android:autofillHints="Title"
+        android:autofillHints="Post Title"
         android:inputType="text" />
 </androidx.constraintlayout.widget.ConstraintLayout>
