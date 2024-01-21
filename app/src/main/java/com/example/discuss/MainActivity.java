@@ -61,6 +61,7 @@ public class MainActivity extends AppCompatActivity {
         users.add(new User("andy@gmail.com", "andy", "Andy"));
         users.add(new User("bob@gmail.com", "bob", "Bob"));
         users.add(new User("cathy@gmail.com", "cathy", "Cathy"));
+        users.add(new User("", "", "Default"));
 
         return users;
     }
@@ -72,6 +73,7 @@ public class MainActivity extends AppCompatActivity {
 
         // delete these later
         try {
+
             allPosts.addPost(new Post("Help me now!", new PostItem(
                     "Can you tell me what is 2 + 2? Thanks!",
                     "Lucas", true
@@ -88,6 +90,15 @@ public class MainActivity extends AppCompatActivity {
                     "Can you tell me what is the capital city of Canada? Thanks!",
                     "George", true
             )));
+
+            final String LONG_TITLE =
+                    "My question has a really long title, so sorry about that :(";
+            final String LONG_QUESTION =
+                    "My question has an even longer body, so " +
+                    "really really, really really, really really, really really, really really" +
+                    " sorry about that :(";
+            allPosts.addPost(new Post(LONG_TITLE, new PostItem(LONG_QUESTION, "Troll", true)));
+
         } catch (PostCollection.PostTitleDuplicateException e) {
             throw new RuntimeException(e);
         }

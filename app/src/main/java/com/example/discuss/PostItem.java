@@ -73,12 +73,10 @@ public class PostItem implements Writable {
 
     @Override
     public String toString() {
-        throw new RuntimeException();
+        return Helpers.breakStringLines(this.getContent(), 14) +
+               "\n\n(" + (this.isQuestion() ? "QUESTION" : "REPLY") +
+               " posted by " + this.getPoster() +
+               "\non " + Helpers.formatDate(this.getCreationTime()) + ")";
     }
 
 }
-
-
-
-
-
