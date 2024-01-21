@@ -13,6 +13,7 @@ import java.util.*;
 
 public class MainActivity extends AppCompatActivity {
 
+    public static final PostCollection allPosts = new PostCollection();
     public static final String DISPLAY_NAME = "com.example.discuss.example.DISPLAY_NAME";
 
     private static class User {
@@ -68,6 +69,29 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
+        // delete these later
+        try {
+            allPosts.addPost(new Post("Help me now!", new PostItem(
+                    "Can you tell me what is 2 + 2? Thanks!",
+                    "Lucas"
+            ))); allPosts.addPost(new Post("Urgently need answers!", new PostItem(
+                    "Can you tell me what is 3 - 5? Thanks!",
+                    "Jerry"
+            ))); allPosts.addPost(new Post("I'm going insane!", new PostItem(
+                    "Can you tell me what is 7 * 3? Thanks!",
+                    "Frederick"
+            ))); allPosts.addPost(new Post("Please...", new PostItem(
+                    "Can you tell me what is 9 / 2? Thanks!",
+                    "Boblet"
+            ))); allPosts.addPost(new Post("Help a dude out!", new PostItem(
+                    "Can you tell me what is the capital city of Canada? Thanks!",
+                    "George"
+            )));
+        } catch (PostCollection.PostTitleDuplicateException e) {
+            throw new RuntimeException(e);
+        }
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 

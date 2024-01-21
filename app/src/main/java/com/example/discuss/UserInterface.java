@@ -24,7 +24,7 @@ public class UserInterface extends AppCompatActivity {
         textView.setText(text);
 
         ListView posts = (ListView) findViewById(R.id.posts);
-        String[] postTitles = {"a", "b", "c"};
+        String[] postTitles = MainActivity.allPosts.getAllPostTitles().toArray(new String[0]);
         ArrayAdapter<String> adapter = new ArrayAdapter<>(
                 this, R.layout.activity_posts, postTitles
         );
