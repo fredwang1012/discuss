@@ -22,7 +22,7 @@ public class PostUI extends AppCompatActivity {
 
         String postTitle = intent.getStringExtra("post title");
         TextView titleView = (TextView) findViewById(R.id.postTitle);
-        titleView.setText(postTitle);
+        titleView.setText(Helpers.breakStringLines(postTitle, 34));
         Post post = MainActivity.allPosts.getPostFromTitle(postTitle);
 
         PostItem postQuestion = post.getQuestion();

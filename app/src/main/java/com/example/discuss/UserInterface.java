@@ -25,15 +25,26 @@ public class UserInterface extends AppCompatActivity {
 
         ListView posts = (ListView) findViewById(R.id.posts);
         String[] postTitles = MainActivity.allPosts.getAllPostTitles().toArray(new String[0]);
-        ArrayAdapter<String> adapter = new ArrayAdapter<>(
-                this, R.layout.activity_posts, postTitles
+
+        Helpers.FormattedString[] formattedPostTitles = new Helpers.FormattedString[postTitles.length];
+        for (int i = 0; i < postTitles.length; i++) {
+            formattedPostTitles[i] = new Helpers.FormattedString(
+                    postTitles[i], 16, Helpers.FormattedString.Mode.LINE_BROKEN
+            );
+        }
+
+        ArrayAdapter<Helpers.FormattedString> adapter = new ArrayAdapter<>(
+                this, R.layout.activity_posts, formattedPostTitles
         );
         posts.setAdapter(adapter);
 
         posts.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             public void onItemClick(AdapterView<?> adView, View view, int position, long itemID) {
                 Intent onClickIntent = new Intent(getApplicationContext(), PostUI.class);
-                onClickIntent.putExtra("post title", (String) adView.getItemAtPosition(position));
+                onClickIntent.putExtra(
+                        "post title",
+                        ((Helpers.FormattedString) adView.getItemAtPosition(position)).originalString
+                );
                 startActivity(onClickIntent);
             }
         });
