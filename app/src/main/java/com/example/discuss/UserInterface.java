@@ -33,28 +33,10 @@ public class UserInterface extends AppCompatActivity {
         posts.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             public void onItemClick(AdapterView<?> adView, View view, int position, long itemID) {
                 Intent onClickIntent = new Intent(getApplicationContext(), PostUI.class);
-                //onClickIntent.putExtra("", position);
+                onClickIntent.putExtra("post title", (String) adView.getItemAtPosition(position));
                 startActivity(onClickIntent);
             }
         });
-
-        /*
-            Intent onClickIntent = new Intent(getApplicationContext(), UserInterface.class);
-            onClickIntent.putExtra("position", position);
-            startActivity(onClickIntent);
-            // --------------
-            SpannableString setTo = new SpannableString(medName + " (" + medTime + ")   ");
-
-            ClickableSpan clickableMed = new ClickableSpan() {
-                @Override
-                public void onClick(@NonNull View view) {
-                    openMedDetails(medName, medDesc, medIsP);
-                }
-            };
-
-            setTo.setSpan(clickableMed, 0, setTo.length() - 3, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
-            medications.get(i).setText(setTo);
-        */
 
     }
 }

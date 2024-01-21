@@ -20,7 +20,7 @@ public class PostUI extends AppCompatActivity {
         setContentView(R.layout.activity_post_ui);
         Intent intent = getIntent();
 
-        String postTitle = "TITLE"; //intent.getStringExtra(MainActivity.POST_TITLE);
+        String postTitle = intent.getStringExtra("post title");
         TextView textView = (TextView) findViewById(R.id.postTitle);
         textView.setText(postTitle);
 
