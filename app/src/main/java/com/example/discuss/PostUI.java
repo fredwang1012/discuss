@@ -21,8 +21,17 @@ public class PostUI extends AppCompatActivity {
         Intent intent = getIntent();
 
         String postTitle = intent.getStringExtra("post title");
-        TextView textView = (TextView) findViewById(R.id.postTitle);
-        textView.setText(postTitle);
+        TextView titleView = (TextView) findViewById(R.id.postTitle);
+        titleView.setText(postTitle);
+        Post post = MainActivity.allPosts.getPostFromTitle(postTitle);
+
+        PostItem postQuestion = post.getQuestion();
+        TextView questionView = (TextView) findViewById(R.id.postQuestion);
+        questionView.setText(
+                postQuestion.getContent() +
+                "\n(posted by " + postQuestion.getPoster() +
+                " on " + postQuestion.getCreationTime() + ")"
+        );
 
     }
 
