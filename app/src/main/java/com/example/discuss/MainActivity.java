@@ -74,20 +74,20 @@ public class MainActivity extends AppCompatActivity {
         try {
             allPosts.addPost(new Post("Help me now!", new PostItem(
                     "Can you tell me what is 2 + 2? Thanks!",
-                    "Lucas"
-            ), true)); allPosts.addPost(new Post("Urgently need answers!", new PostItem(
+                    "Lucas", true
+            ))); allPosts.addPost(new Post("Urgently need answers!", new PostItem(
                     "Can you tell me what is 3 - 5? Thanks!",
-                    "Jerry"
-            ), true)); allPosts.addPost(new Post("I'm going insane!", new PostItem(
+                    "Jerry", true
+            ))); allPosts.addPost(new Post("I'm going insane!", new PostItem(
                     "Can you tell me what is 7 * 3? Thanks!",
-                    "Frederick"
-            ), true)); allPosts.addPost(new Post("Please...", new PostItem(
+                    "Frederick", true
+            ))); allPosts.addPost(new Post("Please...", new PostItem(
                     "Can you tell me what is 9 / 2? Thanks!",
-                    "Boblet"
-            ), true)); allPosts.addPost(new Post("Help a dude out!", new PostItem(
+                    "Boblet", true
+            ))); allPosts.addPost(new Post("Help a dude out!", new PostItem(
                     "Can you tell me what is the capital city of Canada? Thanks!",
-                    "George"
-            ), true));
+                    "George", true
+            )));
         } catch (PostCollection.PostTitleDuplicateException e) {
             throw new RuntimeException(e);
         }

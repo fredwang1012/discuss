@@ -27,11 +27,7 @@ public class PostUI extends AppCompatActivity {
 
         PostItem postQuestion = post.getQuestion();
         TextView questionView = (TextView) findViewById(R.id.postQuestion);
-        questionView.setText(
-                postQuestion.getContent() +
-                "\n(posted by " + postQuestion.getPoster() +
-                " on " + postQuestion.getCreationTime() + ")"
-        );
+        questionView.setText(postQuestion.toString());
 
     }
 

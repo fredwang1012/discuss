@@ -13,14 +13,12 @@ public class Post {
     private String title;
     private PostItem question;
     private List<PostItem> replies;
-    private boolean isQuestion;
 
-    public Post(String t, PostItem pt, boolean q) {
+    public Post(String t, PostItem pt) {
 
         title = t;
         question = pt;
         replies = new ArrayList<>();
-        isQuestion = q;
 
     }
 
@@ -43,17 +41,8 @@ public class Post {
         return replies;
     }
 
-    public boolean isQuestion() {
-        return isQuestion;
-    }
-
     public void addReplies(PostItem reply) {
         replies.add(reply);
-    }
-
-    @Override
-    public String toString() {
-        throw new RuntimeException();
     }
 
 }
