@@ -55,5 +55,4 @@ public class PostUI extends AppCompatActivity {
             startActivity(nextIntent);
         });
     }
-
 }

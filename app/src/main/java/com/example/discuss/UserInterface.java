@@ -21,8 +21,8 @@ public class UserInterface extends AppCompatActivity {
 
         Intent intent = getIntent();
         String text = intent.getStringExtra(MainActivity.DISPLAY_NAME);
-        TextView textView = (TextView) findViewById(R.id.displayName);
-        textView.setText(text);
+//        TextView textView = (TextView) findViewById(R.id.displayName);
+//        textView.setText(text);
 
         ListView posts = (ListView) findViewById(R.id.posts);
         String[] postTitles = MainActivity.allPosts.getAllPostTitles().toArray(new String[0]);
