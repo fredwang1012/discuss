@@ -8,6 +8,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.ListView;
 import android.widget.TextView;
 
@@ -49,5 +50,21 @@ public class UserInterface extends AppCompatActivity {
             }
         });
 
+
+        Button btn = (Button) findViewById(R.id.button2);
+
+
+        btn.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v) {
+                openDialog();
+            }
+        });
+
+    }
+
+    private void openDialog() {
+        Intent intent = new Intent(this, Dialog.class);
+        startActivity(intent);
     }
 }

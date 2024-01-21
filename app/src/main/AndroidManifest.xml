@@ -17,6 +17,10 @@
             android:exported="false"
             android:parentActivityName=".UserInterface"/>
         <activity
+            android:name=".Dialog"
+            android:exported="false"
+            android:parentActivityName=".UserInterface"/>
+        <activity
             android:name=".UserInterface"
             android:exported="false"
             android:parentActivityName=".MainActivity" />
