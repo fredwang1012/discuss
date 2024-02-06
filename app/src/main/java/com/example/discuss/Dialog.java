@@ -76,7 +76,7 @@ public class Dialog extends AppCompatActivity {
         Request request = new Request.Builder()
                 .url("https://api.openai.com/v1/chat/completions")
                 .post(body)
-                .addHeader("Authorization", "Bearer " + "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")
+                .addHeader("Authorization", "Bearer " + "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")
                 .addHeader("Content-Type", "application/json")
                 .build();
 
